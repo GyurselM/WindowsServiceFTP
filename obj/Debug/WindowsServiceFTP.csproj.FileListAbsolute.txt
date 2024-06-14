@@ -2,7 +2,6 @@ C:\Users\gmustan\Desktop\LogicaProgramacion\WindowsServiceFTP\bin\Debug\WindowsS
 C:\Users\gmustan\Desktop\LogicaProgramacion\WindowsServiceFTP\bin\Debug\WindowsServiceFTP.exe
 C:\Users\gmustan\Desktop\LogicaProgramacion\WindowsServiceFTP\bin\Debug\WindowsServiceFTP.pdb
 C:\Users\gmustan\Desktop\LogicaProgramacion\WindowsServiceFTP\obj\Debug\WindowsServiceFTP.csproj.AssemblyReference.cache
-C:\Users\gmustan\Desktop\LogicaProgramacion\WindowsServiceFTP\obj\Debug\WindowsServiceFTP.Files.resources
 C:\Users\gmustan\Desktop\LogicaProgramacion\WindowsServiceFTP\obj\Debug\WindowsServiceFTP.csproj.GenerateResource.cache
 C:\Users\gmustan\Desktop\LogicaProgramacion\WindowsServiceFTP\obj\Debug\WindowsServiceFTP.csproj.CoreCompileInputs.cache
 C:\Users\gmustan\Desktop\LogicaProgramacion\WindowsServiceFTP\obj\Debug\WindowsServiceFTP.exe
@@ -12,3 +11,6 @@ C:\Users\gmustan\Desktop\LogicaProgramacion\WindowsServiceFTP\bin\Debug\Newtonso
 C:\Users\gmustan\Desktop\LogicaProgramacion\WindowsServiceFTP\bin\Debug\WinSCPnet.dll
 C:\Users\gmustan\Desktop\LogicaProgramacion\WindowsServiceFTP\bin\Debug\Newtonsoft.Json.xml
 C:\Users\gmustan\Desktop\LogicaProgramacion\WindowsServiceFTP\obj\Debug\WindowsS.FBBC10E0.Up2Date
+C:\Users\gmustan\Desktop\LogicaProgramacion\WindowsServiceFTP\bin\Debug\log4net.dll
+C:\Users\gmustan\Desktop\LogicaProgramacion\WindowsServiceFTP\bin\Debug\log4net.xml
+C:\Users\gmustan\Desktop\LogicaProgramacion\WindowsServiceFTP\obj\Debug\WindowsServiceFTP.Files.resources

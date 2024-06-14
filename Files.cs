@@ -11,16 +11,22 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using WinSCP;
+using log4net;
+using log4net.Config;
+using System.Runtime.CompilerServices;
 
 
 namespace WindowsServiceFTP
 {
     partial class Files : ServiceBase
     {
+        private static readonly ILog Log = Logs.GetLogger();
+
         bool available = false;
         public Files()
         {
             InitializeComponent();
+            XmlConfigurator.Configure(new System.IO.FileInfo("App.config"));
         }
 
         protected override void OnStart(string[] args)
@@ -41,12 +47,8 @@ namespace WindowsServiceFTP
             {
                 available = true;// hacer esperar ya que se esta ejecutando
 
-                using (EventLog eventLog = new EventLog("Application"))
-                {
-                    eventLog.Source = "Application";
-                    eventLog.WriteEntry("Se inició el proceso de copiado", EventLogEntryType.Information);
-                }
-                
+                Log.Info($"Se inició el proceso de copiado");
+              
                 // Servicio FTP
                 string ftpOriginRoute = ConfigurationSettings.AppSettings["ftpOriginRoute"].ToString();
                 string ftpDestinationRoute = ConfigurationSettings.AppSettings["ftpDestinationRoute"].ToString();
@@ -113,29 +115,41 @@ namespace WindowsServiceFTP
                     //Borrar carpeta temporal
                     Directory.Delete(tempLocalPath, true);
 
-                    using (EventLog eventLog = new EventLog("Application"))
-                    {
-                        eventLog.Source = "Application";
-                        eventLog.WriteEntry("Transferencia de archivos completada", EventLogEntryType.Information);
-                    }
+                    Log.Info("Transferencia de archivos completada");
+
                 }
 
-                using (EventLog eventLog = new EventLog("Application"))
-                {
-                    eventLog.Source = "Application";
-                    eventLog.WriteEntry("Ha finalizado el proceso de copiado", EventLogEntryType.Information);
-                }
+                Log.Info("Ha finalizado el proceso de copiado");
+
             }
             catch (Exception ex)
             {
-                using (EventLog eventLog = new EventLog("Application"))
-                {
-                    eventLog.Source = "Application";
-                    eventLog.WriteEntry("Error en la transferencia de archivos: " + ex.Message, EventLogEntryType.Error);
-                }
+                Log.Error($"Error en la transferencia de archivos: {ex.Message}");
             }
 
             available = false;
         }
+    }
+    // Clases Log
+    /*
+     * Si contamos con una versión de .Net framework mayor o igual a 4.6 
+     * podemos crear una clase logs y hacer referencia de la siguiente manera, ->  private static readonly ILog Log = Logs.GetLogger();
+     * esta manera nos brinda mayor velocidad y rendimiento en aplicaciones que requiera un volumen grande de logs.
+     * 
+     * Si nuestra version es inferior pondremos lo sieguiente en nuestra class del proyecto:
+     * private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+     * 
+     */
+    class Logs
+    {
+        public static ILog GetLogger()
+        {
+            return LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        }
+
+        /*public static ILog GetLogger([CallerFilePath] string filename = "")
+        {
+            return LogManager.GetLogger(filename);
+        }*/
     }
 }
