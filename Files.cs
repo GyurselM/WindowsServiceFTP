@@ -48,7 +48,7 @@ namespace WindowsServiceFTP
                 available = true;// hacer esperar ya que se esta ejecutando
 
                 Log.Info($"Se inició el proceso de copiado");
-              
+
                 // Servicio FTP
                 string ftpOriginRoute = ConfigurationSettings.AppSettings["ftpOriginRoute"].ToString();
                 string ftpDestinationRoute = ConfigurationSettings.AppSettings["ftpDestinationRoute"].ToString();
@@ -111,7 +111,7 @@ namespace WindowsServiceFTP
 
                     // Subir archivo
                     session.PutFiles(tempLocalPath + "\\*", destinationPath + "/", true, transferOptions).Check();
-                    
+
                     //Borrar carpeta temporal
                     Directory.Delete(tempLocalPath, true);
 
@@ -146,10 +146,5 @@ namespace WindowsServiceFTP
         {
             return LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         }
-
-        /*public static ILog GetLogger([CallerFilePath] string filename = "")
-        {
-            return LogManager.GetLogger(filename);
-        }*/
     }
 }
