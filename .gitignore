@@ -1,2 +1,5 @@
 **/.vs
 /ServicioMoverFicherosSFTP
+/bin
+/obj
+/packages
