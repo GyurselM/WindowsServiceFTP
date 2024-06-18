@@ -103,14 +103,21 @@ namespace WindowsServiceFTP
                     Directory.CreateDirectory(tempLocalPath);
 
                     //Descarga los archivos a una carpeta temporal
-                    session.GetFiles(originPath + "*", tempLocalPath + "\\*", true, transferOptions).Check();
-
+                    var transferResult = session.GetFiles(originPath + "*", tempLocalPath + "\\*", true, transferOptions);
+                    transferResult.Check();
                     // Conectar al destinatario
                     session.Close();
                     session.Open(sessionOptionsDestination);
 
                     // Subir archivo
-                    session.PutFiles(tempLocalPath + "\\*", destinationPath + "/", true, transferOptions).Check();
+                    transferResult = session.PutFiles(tempLocalPath + "\\*", destinationPath + "/", true, transferOptions);
+                    transferResult.Check();
+
+                    foreach (var transfer in transferResult.Transfers)
+                    {
+                        string fileName = Path.GetFileName(transfer.FileName);
+                        Log.Info($"Archivo enviado: {fileName}");
+                    }
 
                     //Borrar carpeta temporal
                     Directory.Delete(tempLocalPath, true);

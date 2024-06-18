@@ -34,7 +34,7 @@
             // stLapso
             // 
             this.stLapso.Enabled = true;
-            this.stLapso.Interval = 600D;
+            this.stLapso.Interval = 60000D;
             this.stLapso.Elapsed += new System.Timers.ElapsedEventHandler(this.stLapso_Elapsed);
             // 
             // Files
