@@ -1,10 +1,12 @@
 # WindowsServiceFTP
-Esta trabajo lo realice en mis practicas con MRW donde tenia que crear un servicio de windows donde tenia que pasar archivos de un servidor a otro utilizando FTP
-y creando mi propio log para registrar todo lo que se estaba moviendo tanto en local como en BBDD (SQL Server)
 
-## License
+### License
 
 This project is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International License. You can view the full license [here](./LICENSE.md).
+
+Esta trabajo lo realice en mis practicas con MRW donde tenia que crear un servicio de windows donde tenia que pasar archivos de un servidor a otro utilizando FTP
+y creando mi propio log para registrar todo lo que se estaba moviendo tanto en local como en BBDD (SQL Server).	
+Este es el achivo principal la cual me permite pasar archivos de un sitio a otro.
 
 ```csharp
 namespace WindowsServiceFTP
@@ -129,8 +131,9 @@ namespace WindowsServiceFTP
         }
     }
 ```
-Este es el achivo principal la cual me permite pasar archivos de un sitio a otro,
-esta otra, es la clase Log la cual lo llamo arriba de todo para que poder utilizar el log en todo mi codigo.
+
+Esta otra, es la clase Log la cual lo llamo arriba de todo para que poder utilizar el log en todo mi codigo.
+
 ```csharp
 // Clases Log
     /*
@@ -150,6 +153,7 @@ esta otra, es la clase Log la cual lo llamo arriba de todo para que poder utiliz
         }
     }
 ```
+
 A continuacion esta el App.config que es donde he creado el log tanto localmente como en BBDD tambien al final he creado un AppSettings para poder poner todo dato relevante como:
 - Ruta de los FTP, añadiendo tanto el origen y el destino de los FTPs. eje: "D:\Origen\" y "D:\Destino\"
 - ftpUsername y ftpPassword
@@ -157,6 +161,7 @@ A continuacion esta el App.config que es donde he creado el log tanto localmente
 - Los Puertos
   
 Basicamente he creado esto para que en un futuro si se necesita un cambio de desdino, usuario, contraseña o pueto, es tan facil como acceder aqui y hacer todo el cambio
+
 ```xml
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <configuration>
