@@ -2,6 +2,10 @@
 Esta trabajo lo realice en mis practicas con MRW donde tenia que crear un servicio de windows donde tenia que pasar archivos de un servidor a otro utilizando FTP
 y creando mi propio log para registrar todo lo que se estaba moviendo tanto en local como en BBDD (SQL Server)
 
+## License
+
+This project is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International License. You can view the full license [here](./LICENSE.md).
+
 ```csharp
 namespace WindowsServiceFTP
 {
