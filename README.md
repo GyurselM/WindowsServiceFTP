@@ -4,35 +4,13 @@
 
 This project is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International License. You can view the full license [here](./LICENSE.md).
 
-Esta trabajo lo realice en mis practicas con MRW donde tenia que crear un servicio de windows donde tenia que pasar archivos de un servidor a otro utilizando FTP
+
+Creé un servicio de Windows donde tenia que pasar archivos de un servidor a otro utilizando FTP
 y creando mi propio log para registrar todo lo que se estaba moviendo tanto en local como en BBDD (SQL Server).	
-Este es el achivo principal la cual me permite pasar archivos de un sitio a otro.
+Este es la parte que mas se me dificulto que es basicamente la tratransferencia de achivos de un servidor a otro.
 
 ```csharp
-namespace WindowsServiceFTP
-{
-    partial class Files : ServiceBase
-    {
-        private static readonly ILog Log = Logs.GetLogger();
-
-        bool available = false;
-        public Files()
-        {
-            InitializeComponent();
-            XmlConfigurator.Configure(new System.IO.FileInfo("App.config"));
-        }
-
-        protected override void OnStart(string[] args)
-        {
-            stLapso.Start();
-        }
-
-        protected override void OnStop()
-        {
-            stLapso.Stop();
-        }
-
-        private void stLapso_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+	private void stLapso_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             if (available) return;
 
@@ -129,10 +107,9 @@ namespace WindowsServiceFTP
 
             available = false;
         }
-    }
 ```
 
-Esta otra, es la clase Log la cual lo llamo arriba de todo para que poder utilizar el log en todo mi codigo.
+Esta otra clase es mi propio log que me va registrando tanto en local como en la BBDD.
 
 ```csharp
 // Clases Log
